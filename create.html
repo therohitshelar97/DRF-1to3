@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="fm">
+        name:<input type="text" name="name" />
+        <br><br>
+        age : <input type="number" name="age" />
+        <br><br>
+        city :<input type="text" name="city" />
+
+    </form>
+
+
+    <script>
+        url = 'http://127.0.0.1:8000/geting/'
+        function gett(){
+        
+                name = document.fm.name.value;
+                age = document.fm.age.value;
+                city = document.fm.city.value;
+                console.log(name,age,city)
+
+                data = {
+                    id:12,
+                    name : name,
+                    age : age,
+                    city : city,
+                    // image : 'abc'
+                }
+
+                console.log(data)
+
+                fetch(url,{
+                    method : 'POST',
+                    headers : {'Content-Type' : 'application/json'},
+                    body : JSON.stringify(data)
+                })
+                .then(response=>response.json())
+                .then(re=>{
+                    alert(re)
+                })
+                        }
+    </script>
+<input type="submit" value="Submit" onclick="gett()" />
+</body>
+</html>
