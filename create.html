@@ -6,12 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <form name="fm">
+    <form name="fm" enctype="multipart/form-data">
         name:<input type="text" name="name" />
         <br><br>
         age : <input type="number" name="age" />
         <br><br>
         city :<input type="text" name="city" />
+        <br><br> 
+        image:<input type="file" accept="*" name="image" />
 
     </form>
 
@@ -23,6 +25,7 @@
                 name = document.fm.name.value;
                 age = document.fm.age.value;
                 city = document.fm.city.value;
+                image = document.fm.image.value;
                 console.log(name,age,city)
 
                 data = {
@@ -30,7 +33,7 @@
                     name : name,
                     age : age,
                     city : city,
-                    // image : 'abc'
+                    image : image
                 }
 
                 console.log(data)
