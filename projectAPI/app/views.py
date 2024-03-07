@@ -35,3 +35,28 @@ def Show(request):
     json_data = DataSerializers(data1,many=True)
     # print(json_data.data)
     return JsonResponse(json_data.data, safe=False)
+
+def Delete(request,id):
+    Data.objects.get(pk=id).delete()
+    data = {"data":"Data Deleted successfully....."}
+    return JsonResponse(data, content_type='application/json')
+
+@csrf_exempt   
+def Update(request):
+    print("Working")
+    if request.method == "PUT":
+        print("Working")
+        json = request.body
+        bdata = io.BytesIO(json)
+        pythondata = JSONParser().parse(bdata)
+        print(pythondata)
+        id = pythondata.get('id')
+        inst = Data.objects.get(pk=id)
+        print(inst)
+        print(pythondata)
+        d = DataSerializers(inst,data = pythondata)
+        if d.is_valid():
+            d.save()
+            data = {"data":"Data Updated"}
+            return JsonResponse(data,content_type='application/json')
+
