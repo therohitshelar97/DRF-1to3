@@ -23,7 +23,7 @@ def Show(request):
     #         return JsonResponse(re, content_type='application/json')
 
     if request.method == "POST":
-        sr = DataSerializers(data = request.data)
+        sr = DataSerializers(data = request.data)    
         if sr.is_valid():
             sr.save()
             re = {'DATA':"Created Successfully"}
@@ -33,5 +33,5 @@ def Show(request):
 
     data1 = Data.objects.all()
     json_data = DataSerializers(data1,many=True)
-    print(json_data.data)
+    # print(json_data.data)
     return JsonResponse(json_data.data, safe=False)
