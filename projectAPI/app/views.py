@@ -41,6 +41,11 @@ def Delete(request,id):
     data = {"data":"Data Deleted successfully....."}
     return JsonResponse(data, content_type='application/json')
 
+def UpdateFetch(request,id):
+    data12 = Data.objects.get(pk=id)
+    json = DataSerializers(data12)
+    return JsonResponse(json.data, content_type='application/json')
+
 @csrf_exempt   
 def Update(request):
     print("Working")
