@@ -15,24 +15,27 @@ fetch('http://127.0.0.1:8000/geting/')
         temp += `<td> <img src='http://127.0.0.1:8000/${data[i]['image']}'  height='100' width='100' alt='path' /> </td>`
         temp += `
                   <td>
-                     <form action="" >
-                       <input type="number" id="id" value="${data[i]['id']}" class="d-none" />
-                       <input type="submit" value="Delete" onclick="Delete()" class="btn btn-danger" />
+                  <a href='http://localhost:52330/update.html?${data[i]['id']}'>Update</a>
+                     <form action="" method='post' name='fm' >
+                       <input type="submit" value="Delete" onclick="Delete(${data[i]['id']})" class="btn btn-danger" />
                      </form>
                   </td>
                   `
         temp += '</tr>'
+
+        console.log(typeof(temp))
        
     }
     document.getElementById('t').innerHTML = temp
   
 })
 
-function Delete(){
+function Delete(id1){
 
-    id1 = document.getElementById('id').value
+    // id1 = document.getElementById('id11').value;
     id1 = parseInt(id1)
     url = `http://127.0.0.1:8000/delete/${id1}`
+    alert('Data Deleted..')
 
     fetch(url)
 }

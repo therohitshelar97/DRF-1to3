@@ -1,7 +1,6 @@
 url = 'http://127.0.0.1:8000/geting/'
 
 data = {
-    id:12,
     name : 'abcdefg',
     age : 38,
     city : 'Mumbai',
